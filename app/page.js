@@ -114,6 +114,8 @@ export default function Home() {
           ...secondUserState,
           nextMove[Math.floor(Math.random() * nextMove.length)],
         ]);
+      } else {
+        setSecondUserState([...secondUserState, nextMove]);
       }
     }
   }, [userState, secondUserState, winner]);
