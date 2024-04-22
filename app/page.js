@@ -168,7 +168,7 @@ export default function Home() {
       </div>
       <button
         onClick={() => clearBoard()}
-        className="bg-grey-lightest rounded-full p-4 shadow-lg font-medium hover:translate-y-[-5px] transition-transform duration-300 ease-in-out"
+        className="bg-grey-lightest rounded-full p-4 shadow-lg font-medium hover:translate-y-[-5px] transition-transform duration-300 ease-in-out w-[200px] border-[1px] border-gray-400"
       >
         Clear board
       </button>
