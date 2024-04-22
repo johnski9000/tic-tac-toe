@@ -157,10 +157,10 @@ export default function Home() {
             }}
           >
             {userState.includes(square) && (
-              <Image src="/x.jpg" width={50} height={50} alt="X" className="" />
+              <Image src="/x.png" width={50} height={50} alt="X" className="" />
             )}
             {secondUserState.includes(square) && (
-              <Image src="/o.jpg" width={50} height={50} alt="O" />
+              <Image src="/o.png" width={50} height={50} alt="O" />
             )}
           </div>
         ))}
