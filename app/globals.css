@@ -5,7 +5,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: white;
+  background: linear-gradient(45deg, #afedfb 0%, #fabdaf 100%);
 }
 .center {
   display: flex;

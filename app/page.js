@@ -93,38 +93,31 @@ export default function Home() {
     }
   };
   useEffect(() => {
-    if (userState.length >= 3) {
-      for (let i = 0; i < winningCombinations.length; i++) {
-        if (
-          userState.includes(winningCombinations[i][0]) &&
-          userState.includes(winningCombinations[i][1]) &&
-          userState.includes(winningCombinations[i][2])
-        ) {
-          setWinner("User");
-        } else if (
-          secondUserState.includes(winningCombinations[i][0]) &&
-          secondUserState.includes(winningCombinations[i][1]) &&
-          secondUserState.includes(winningCombinations[i][2])
-        ) {
-          setWinner("Bot");
+    if (winner || checkAvailableSquares.length === 0) return;
+
+    const checkWinner = (state, player) => {
+      winningCombinations.forEach((combination) => {
+        if (combination.every((index) => state.includes(index))) {
+          setWinner(player);
         }
-      }
-    }
-    if (checkAvailableSquares.length === 0) {
-      setWinner("Draw");
-    }
-    if (checkAvailableSquares.length !== 0 && !winner) {
+      });
+    };
+
+    checkWinner(userState, "User");
+    checkWinner(secondUserState, "Bot");
+
+    if (!winner && userState.length > secondUserState.length) {
       const nextMove = calculateNextMove();
+      console.log(nextMove, "nextMove");
       if (Array.isArray(nextMove)) {
         setSecondUserState([
           ...secondUserState,
           nextMove[Math.floor(Math.random() * nextMove.length)],
         ]);
-      } else {
-        setSecondUserState([...secondUserState, nextMove]);
       }
     }
-  }, [userState]);
+  }, [userState, secondUserState, winner]);
+
   const clearBoard = () => {
     setUserState([]);
     setSecondUserState([]);
