@@ -148,6 +148,12 @@ export default function Home() {
             key={square}
             className={SetClass(index)}
             onClick={() => {
+              if (
+                userState.includes(square) ||
+                secondUserState.includes(square)
+              )
+                return;
+
               setUserState([...userState, square]);
             }}
           >
